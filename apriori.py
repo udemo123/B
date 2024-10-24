@@ -18,27 +18,26 @@ print("\nTransactions are as follows:")
 for transaction in transactions:
     print(transaction)
 print("\nThe candidate set C1 is:", items)
+
 support_c1 = calculate_support([(item,) for item in items], transactions)
 for i, item in enumerate(items):
     print(f"Support for {item} is: {support_c1[i]}")
-
 l1 = [items[i] for i in range(len(items)) if support_c1[i] >= support_threshold]
 print("\nL1 is:", l1)
+
 c2 = list(itertools.combinations(items, 2))
 print("\nCandidate set C2 is:", c2)
+
 support_c2 = calculate_support(c2, transactions)
 for i, itemset in enumerate(c2):
     print(f"Support for {itemset} is: {support_c2[i]}")
-
-
 l2 = [c2[i] for i in range(len(c2)) if support_c2[i] >= support_threshold]
 print("\nL2 is:", l2)
+
 c3 = list(itertools.combinations(items, 3))
 support_c3 = calculate_support(c3, transactions)
 for i, itemset in enumerate(c3):
     print(f"Support for {itemset} is: {support_c3[i]}")
-
-
 l3 = [c3[i] for i in range(len(c3)) if support_c3[i] >= support_threshold]
 print("\nL3 is:", l3)
 
