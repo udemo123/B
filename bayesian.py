@@ -3,12 +3,11 @@ from sklearn import preprocessing
 from sklearn.naive_bayes import GaussianNB
  
 Weather = ['Sunny', 'Sunny', 'Overcast', 'Rainy', 'Rainy', 'Rainy', 
-           'Overcast', 'Sunny', 'Sunny', 'Rainy', 'Sunny', 
-           'Overcast', 'Overcast', 'Rainy']
+           'Overcast', 'Sunny', 'Sunny', 'Rainy']
 Temp = ['Hot', 'Hot', 'Hot', 'Mild', 'Cool', 'Cool', 'Cool', 
-        'Mild', 'Cool', 'Mild', 'Mild', 'Mild', 'Hot', 'Mild']
+        'Mild', 'Cool', 'Mild']
 Play = ['No', 'No', 'Yes', 'Yes', 'Yes', 'No', 'Yes', 'No', 
-        'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No']
+        'Yes', 'Yes']
  
 le = preprocessing.LabelEncoder()
 weather_encoded = le.fit_transform(Weather)
