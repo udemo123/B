@@ -1,0 +1,12 @@
+import numpy as np
+from scipy.cluster.hierarchy import dendrogram, linkage, fcluster
+import matplotlib.pyplot as plt
+
+data = np.array([[85, 90], [80, 85], [75, 80], [60, 70], [90, 95]])  # Sample data
+clusters = fcluster(linkage(data, 'ward'), 3, criterion='maxclust')  # Clustering
+
+print("Data and Clusters:\n", np.column_stack((data, clusters)))  # Show data with clusters
+
+# Plot dendrogram and scatter plot
+dendrogram(linkage(data, 'ward')); plt.show()
+plt.scatter(data[:, 0], data[:, 1], c=clusters); plt.show()

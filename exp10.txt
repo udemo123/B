@@ -1,0 +1,20 @@
+import itertools
+
+def calc_support(itemsets, transactions):
+    return [sum(all(item in t for item in itemset) for t in transactions) / len(transactions) for itemset in itemsets]
+
+support_threshold = float(input("Enter the minimum support: "))
+items = ['i1', 'i2', 'i3', 'i4', 'i5']
+transactions = [input(f"Enter items for transaction {i+1}: ").strip().split(',') for i in range(int(input("Enter number of transactions: ")))]
+transactions = [[item.strip() for item in t] for t in transactions]
+
+for k in range(1, 4):
+    c = list(itertools.combinations(items, k))
+    support = calc_support(c, transactions)
+    l = [c[i] for i in range(len(c)) if support[i] >= support_threshold]
+    print(f"C{k}:", c, "\nSupport for C{k}:", support, "\nL{k}:", l)
+
+    if k == 3:
+        for itemset in l:
+            conf = sum(all(item in t for item in itemset) for t in transactions) / sum(itemset[0] in t for t in transactions)
+            print(f"Confidence for {itemset}: {conf:.2f}" if itemset else f"Confidence for {itemset}: 0.00")
